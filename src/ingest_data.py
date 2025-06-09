@@ -11,7 +11,7 @@ class DataIngestor(ABC):
     def ingest(self, file_path: str) -> pd.DataFrame:
         """Abstract method to ingest data from a given file."""
         pass
-
+ 
 
 # Implement a concrete class for ZIP Ingestion
 class ZipDataIngestor(DataIngestor):
@@ -55,18 +55,21 @@ class DataIngestorFactory:
 
 # Example usage:
 if __name__ == "__main__":
-    # # Specify the file path
-    # file_path = "D:\Personal Projects\House Price Prediction\data\archive.zip"
+     # Specify the file path
+     #file_path = "D:\Personal Projects\House Price Prediction\data\archive.zip"
+     file_path = r"D:\Personal Projects\House Price Prediction\data\archive.zip"
 
-    # # Determine the file extension
-    # file_extension = os.path.splitext(file_path)[1]
 
-    # # Get the appropriate DataIngestor
-    # data_ingestor = DataIngestorFactory.get_data_ingestor(file_extension)
+     # Determine the file extension
+     file_extension = os.path.splitext(file_path)[1]
 
-    # # Ingest the data and load it into a DataFrame
-    # df = data_ingestor.ingest(file_path)
+     # Get the appropriate DataIngestor
+     data_ingestor = DataIngestorFactory.get_data_ingestor(file_extension)
 
-    # # Now df contains the DataFrame from the extracted CSV
-    # print(df.head())  # Display the first few rows of the DataFrame
-    pass
+     # Ingest the data and load it into a DataFrame
+     df = data_ingestor.ingest(file_path)
+
+     # Now df contains the DataFrame from the extracted CSV
+     print(df.head())  # Display the first few rows of the DataFrame
+     #print("Main block is running!")
+    #pass
